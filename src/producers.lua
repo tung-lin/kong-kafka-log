@@ -33,6 +33,8 @@ local function create_producer(conf)
     producer_type = conf.producer_async and "async" or "sync",
     flush_time = conf.producer_async_flush_timeout,
     max_buffering = conf.producer_async_buffering_limits_messages_in_memory,
+    
+    refresh_interval = 5000,
   }
   local cluster_name = conf.cluster_name
   return kafka_producer:new(broker_list, producer_config, cluster_name)
